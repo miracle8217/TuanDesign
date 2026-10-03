@@ -34,59 +34,83 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <header class="hero">
-    <img class="decoration moon-bg" src="images/moon-bg.png" alt="" />
-    <img class="decoration flower-left" src="images/flower-left.png" alt="" />
-    <img class="decoration flower-right" src="images/flower-right.png" alt="" />
-    <img class="decoration cloud-left" src="images/cloud-left.png" alt="" />
-    <img class="decoration cloud-right" src="images/cloud-right.png" alt="" />
+  <!-- Hero / 插畫版首頁 -->
+  <header class="hero-poster">
+    <div class="hero-poster__bg">
+      <div class="hero-poster__moon"></div>
+      <img class="hero-poster__flower hero-poster__flower--left" src="images/flower-left.png" alt="" />
+      <img class="hero-poster__flower hero-poster__flower--right" src="images/flower-right.png" alt="" />
+      <img class="hero-poster__cloud hero-poster__cloud--left" src="images/cloud-left.png" alt="" />
+      <img class="hero-poster__cloud hero-poster__cloud--right" src="images/cloud-right.png" alt="" />
 
-    <div class="hero__inner container">
-      <div class="hero__badge">2026 中秋限定</div>
-      <h1 class="hero__title">月糰所</h1>
-      <p class="hero__subtitle">Tsuki Dango</p>
-      <p class="hero__lead">天竺鼠店長用溫柔甜點，陪你過一個更團圓的中秋。</p>
+      <div class="hero-poster__petals">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
 
-      <div class="hero__promo-card">
-        <div class="promo-line">即日起｜早鳥訂購限定禮盒 <strong>NT$666</strong></div>
-        <div class="promo-line">訂購滿 NT$1500，結帳再享 <strong>88 折</strong></div>
+    <div class="container hero-poster__content">
+      <div class="hero-poster__copy">
+        <div class="hero-poster__brand">
+          <h1 class="hero-poster__title">月糰所</h1>
+          <p class="hero-poster__subtitle">Tsuki Dango</p>
+        </div>
+
+        <p class="hero-poster__tagline">今年中秋，讓團圓多一點甜。</p>
+
+        <div class="hero-poster__promo">
+          <p class="hero-poster__promo-line">
+            <span>即日起｜早鳥訂購限定禮盒</span>
+            <strong>NT$666</strong>
+          </p>
+          <p class="hero-poster__promo-line">
+            <span>訂購滿 NT$1500，結帳再享</span>
+            <strong>88 折</strong>
+          </p>
+        </div>
+
+        <div class="hero-poster__actions">
+          <a href="#products" class="btn btn--primary" onclick="track('cta_click', {button_name:'立即選購', section_name:'hero'})">立即選購</a>
+          <a href="#contact" class="btn btn--ghost" onclick="track('cta_click', {button_name:'請洽詢天竺鼠店員', section_name:'hero'})">請洽詢天竺鼠店員</a>
+        </div>
       </div>
 
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="#products">立即選購</a>
-        <a class="btn btn--ghost" href="#contact">請洽詢天竺鼠店員</a>
+      <div class="hero-poster__visual">
+        <img class="hero-poster__mascot" src="images/mascot.png" alt="天竺鼠店長" />
+        <img class="hero-poster__product hero-poster__product--box" src="images/product-box.png" alt="中秋限定禮盒" />
+        <img class="hero-poster__product hero-poster__product--dango" src="images/dango.png" alt="三色糰子" />
+        <img class="hero-poster__product hero-poster__product--mooncake" src="images/mooncake.png" alt="月餅" />
       </div>
-
-      <img class="hero__mascot" src="images/mascot.png" alt="天竺鼠店長" />
     </div>
   </header>
 
   <main>
-    <section class="story section">
-      <div class="container story__grid">
-        <div class="story__text">
+    <section class="story-banner section">
+      <div class="container story-banner__inner">
+        <div class="story-banner__text">
           <p class="eyebrow">品牌故事</p>
-          <h2>今年中秋，讓團圓多一點甜。</h2>
+          <h2>由天竺鼠店長守護的中秋甜點鋪</h2>
           <p>
-            月糰所是一間由天竺鼠店長經營的虛擬甜點店。
-            以中秋禮盒、單顆月餅與三色糰子為主角，
-            讓顧客透過網站完成瀏覽、選購、折扣與訂購流程。
+            月糰所是一間結合節慶氛圍與虛擬購物體驗的甜點店。
+            透過插畫風格的品牌設計，讓顧客在選購禮盒、月餅與糰子的同時，
+            也能感受到溫暖團圓的節日氛圍。
           </p>
         </div>
-        <div class="story__card">
+
+        <div class="story-banner__card">
           <img src="images/banner.png" alt="中秋限定禮盒橫幅" />
         </div>
       </div>
     </section>
 
-    <section id="products" class="section section--products">
+    <section id="products" class="section products-showcase">
       <div class="container">
         <div class="section__header">
           <div>
             <p class="eyebrow">人氣商品</p>
-            <h2>中秋限定禮盒與單品</h2>
+            <h2>中秋限定甜點系列</h2>
           </div>
-          <p class="section__note">可加入購物車、調整數量、套用折扣券</p>
+          <p class="section__note">可查看詳情、加入購物車、調整數量與套用折扣券</p>
         </div>
 
         <div class="layout">
@@ -176,7 +200,7 @@
     </div>
   </footer>
 
-  <!-- Modal -->
+  <!-- 商品詳情 Modal -->
   <div id="modalBackdrop" class="modal-backdrop" onclick="closeModal(event)">
     <div class="modal" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="closeModal()">×</button>
