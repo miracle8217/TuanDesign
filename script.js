@@ -380,4 +380,3 @@ window.addEventListener("DOMContentLoaded", () => {
     page_location: window.location.href
   });
 });
-
