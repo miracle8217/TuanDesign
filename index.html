@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>月糰所 Tsuki Dango｜天竺鼠中秋甜點店</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <header class="hero">
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <div class="brand-badge">月糰所 Tsuki Dango</div>
+      <h1>天竺鼠中秋甜點店</h1>
+      <p class="hero__lead">中秋限定禮盒、單顆月餅、三色糰子，打造最療癒的團圓甜點體驗。</p>
+
+      <div class="hero__promo">
+        <div class="promo-card">
+          <span class="promo-card__label">早鳥限定</span>
+          <strong>禮盒 NT$666</strong>
+        </div>
+        <div class="promo-card">
+          <span class="promo-card__label">滿額優惠</span>
+          <strong>滿 NT$1500 再享 88 折</strong>
+        </div>
+      </div>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#products">立即選購</a>
+        <a class="btn btn--ghost" href="#contact">聯絡訂購</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section--story">
+      <div class="container story-grid">
+        <div class="story-card story-card--text">
+          <p class="eyebrow">品牌故事</p>
+          <h2>由天竺鼠店長守護的中秋甜點鋪</h2>
+          <p>
+            這是一間結合節慶氛圍與可愛角色的虛擬商店，
+            讓顧客可以像逛電商一樣瀏覽商品、加入購物車、選擇折扣並完成訂購。
+          </p>
+        </div>
+        <div class="story-card story-card--visual">
+          <img src="images/cover.png" alt="月糰所中秋主視覺" />
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">商品專區</p>
+            <h2>人氣熱銷商品</h2>
+          </div>
+          <div class="section-head__note">可查看詳情、加入購物車、調整數量與折扣券</div>
+        </div>
+
+        <div class="catalog-layout">
+          <div>
+            <div id="productGrid" class="product-grid"></div>
+          </div>
+
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <h3>購物車</h3>
+              <div id="cartList" class="cart-list"></div>
+              <p id="emptyCart" class="empty-state">尚未加入商品。</p>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>折扣與結帳</h3>
+
+              <label class="field-label">折扣券代碼</label>
+              <div class="coupon-row">
+                <input id="couponInput" type="text" placeholder="輸入優惠券代碼" />
+                <button class="btn btn--secondary" onclick="applyCoupon()">套用</button>
+              </div>
+              <p id="couponMsg" class="helper-text">可輸入：MOON88、DANGO50、TSUKI100</p>
+
+              <div class="summary">
+                <div class="summary-row"><span>商品小計</span><strong id="subtotal">NT$0</strong></div>
+                <div class="summary-row"><span>折扣券折抵</span><strong id="couponDiscount">NT$0</strong></div>
+                <div class="summary-row"><span>滿額折扣</span><strong id="thresholdDiscount">NT$0</strong></div>
+                <div class="summary-row summary-row--total"><span>應付金額</span><strong id="total">NT$0</strong></div>
+              </div>
+
+              <button class="btn btn--primary btn--full" onclick="beginCheckout()">前往結帳</button>
+              <button class="btn btn--ghost btn--full" onclick="clearCart()">清空購物車</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="checkout" class="section section--checkout">
+      <div class="container checkout-grid">
+        <div class="checkout-card">
+          <p class="eyebrow">結帳資訊</p>
+          <h2>填寫訂購資料</h2>
+          <form class="checkout-form" onsubmit="submitOrder(event)">
+            <input id="customerName" type="text" placeholder="姓名" required />
+            <input id="customerPhone" type="tel" placeholder="電話" required />
+            <select id="pickupMethod" required>
+              <option value="">請選擇取貨方式</option>
+              <option value="store">門市自取</option>
+              <option value="delivery">宅配</option>
+              <option value="contact">聯絡後確認</option>
+            </select>
+            <textarea id="orderNote" placeholder="備註，例如口味、數量、取貨時間"></textarea>
+            <button class="btn btn--primary btn--full" type="submit">送出訂單</button>
+          </form>
+        </div>
+
+        <div class="checkout-card checkout-card--visual">
+          <img src="images/banner.png" alt="中秋優惠橫幅" />
+          <div class="checkout-card__info">
+            <h3>立即搶購中秋限定禮盒</h3>
+            <p>結帳滿額再折扣，適合送禮、團購、節慶訂購。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-card">
+        <p class="eyebrow">聯絡訂購</p>
+        <h2>想人工訂購？請洽天竺鼠店員</h2>
+        <p>電話、LINE、表單皆可追蹤轉換成效。</p>
+        <div class="contact-actions">
+          <button class="btn btn--secondary" onclick="contactClick('phone')">電話：0951-515-151</button>
+          <button class="btn btn--secondary" onclick="contactClick('line')">LINE 官方帳號</button>
+          <button class="btn btn--ghost" onclick="contactClick('form')">填寫詢問表單</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 月糰所 Tsuki Dango｜中秋限定虛擬商店</p>
+    </div>
+  </footer>
+
+  <!-- 商品詳情 Modal -->
+  <div id="modalBackdrop" class="modal-backdrop" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal__media">
+        <img id="modalImage" src="" alt="" />
+      </div>
+      <div class="modal__body">
+        <span id="modalTag" class="pill"></span>
+        <h3 id="modalTitle" class="modal__title"></h3>
+        <p id="modalDesc" class="modal__desc"></p>
+
+        <div class="modal__price">
+          <span id="modalPrice" class="price"></span>
+          <span id="modalOriginal" class="original"></span>
+        </div>
+
+        <div class="qty-picker">
+          <button type="button" onclick="changeModalQty(-1)">−</button>
+          <span id="modalQty">1</span>
+          <button type="button" onclick="changeModalQty(1)">+</button>
+        </div>
+
+        <div class="modal__actions">
+          <button class="btn btn--primary" id="modalAddBtn">加入購物車</button>
+          <button class="btn btn--ghost" onclick="closeModal()">關閉</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
 
